@@ -1,550 +1,269 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sarah GmbH – Zitronen Spedition & Handel</title>
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-html{
-    scroll-behavior:smooth;
-}
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f5f5ef;
-    color:#171717;
-}
-/* NAVIGATION */
-header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
-    background:rgba(10,10,10,.94);
-    backdrop-filter:blur(12px);
-    padding:18px 7%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-.logo{
-    color:white;
-    font-size:23px;
-    font-weight:900;
-}
-.logo span{
-    color:#ffd928;
-}
-nav a{
-    color:white;
-    text-decoration:none;
-    margin-left:22px;
-    font-weight:bold;
-    transition:.3s;
-}
-nav a:hover{
-    color:#ffd928;
-}
-/* HERO */
-.hero{
-    min-height:100vh;
-    padding:150px 7% 80px;
-    display:flex;
-    align-items:center;
-    position:relative;
-    overflow:hidden;
-    background:
-    radial-gradient(circle at 80% 30%,white 0%,transparent 25%),
-    linear-gradient(135deg,#fff6a0,#ffd928);
-}
-.hero-content{
-    max-width:800px;
-    z-index:2;
-}
-.tag{
-    font-weight:bold;
-    letter-spacing:3px;
-    font-size:14px;
-}
-h1{
-    font-size:clamp(55px,9vw,100px);
-    line-height:.88;
-    margin:25px 0;
-}
-.hero p{
-    max-width:650px;
-    font-size:20px;
-    line-height:1.6;
-}
-.btn{
-    display:inline-block;
-    margin-top:30px;
-    padding:16px 25px;
-    background:#111;
-    color:white;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:bold;
-    transition:.3s;
-}
-.btn:hover{
-    transform:translateY(-5px);
-    box-shadow:0 15px 30px #0003;
-}
-/* ZITRONEN */
-.lemon{
-    position:absolute;
-    font-size:80px;
-    animation:float 5s ease-in-out infinite;
-}
-.lemon1{
-    right:12%;
-    top:25%;
-}
-.lemon2{
-    right:25%;
-    bottom:18%;
-    font-size:50px;
-    animation-delay:1s;
-}
-.lemon3{
-    right:5%;
-    bottom:5%;
-    font-size:120px;
-    animation-delay:2s;
-}
-@keyframes float{
-    0%,100%{
-        transform:translateY(0) rotate(0deg);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarah Zitronen Spedition</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    50%{
-        transform:translateY(-25px) rotate(15deg);
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
     }
-}
-/* SECTIONS */
-section{
-    padding:90px 7%;
-}
-h2{
-    font-size:45px;
-    margin-bottom:40px;
-}
-/* LEISTUNGEN */
-.cards{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-    gap:22px;
-}
-.card{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    border:1px solid #ddd;
-    box-shadow:
-    0 10px 30px #0000000d;
-    transition:.3s;
-}
-.card:hover{
-    transform:translateY(-8px);
-    box-shadow:
-    0 20px 40px #0002;
-}
-.icon{
-    font-size:45px;
-    margin-bottom:15px;
-}
-.card h3{
-    font-size:22px;
-    margin-bottom:12px;
-}
-.card p{
-    color:#555;
-    line-height:1.6;
-}
-/* ZAHLEN */
-.stats{
-    background:#111;
-    color:white;
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(170px,1fr));
-    gap:30px;
-}
-.stat{
-    font-size:17px;
-}
-.stat strong{
-    display:block;
-    color:#ffd928;
-    font-size:42px;
-    margin-bottom:8px;
-}
-/* TRACKING */
-.tracking{
-    max-width:700px;
-    margin:auto;
-    text-align:center;
-}
-input{
-    width:100%;
-    padding:16px;
-    margin:20px 0 10px;
-    border:
-    1px solid #ccc;
-    border-radius:10px;
-    font-size:16px;
-}
-button{
-    width:100%;
-    padding:16px;
-    border:0;
-    border-radius:10px;
-    background:#111;
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-}
-button:hover{
-    background:#333;
-}
-#result{
-    display:none;
-    margin-top:20px;
-    padding:20px;
-    background:#fff3a0;
-    border-radius:15px;
-    line-height:1.7;
-}
-/* KARRIERE */
-.jobs{
-    display:grid;
-    gap:20px;
-}
-.job{
-    background:white;
-    padding:25px;
-    border-radius:18px;
-    border-left:
-    7px solid #ffd928;
-    transition:.3s;
-}
-.job:hover{
-    transform:translateX(8px);
-}
-.job h3{
-    margin-bottom:10px;
-}
-.job p{
-    color:#555;
-    line-height:1.5;
-}
-/* ZITAT */
-.quote{
-    background:#fff3a0;
-    padding:35px;
-    border-radius:22px;
-    font-size:25px;
-    font-weight:bold;
-}
-/* FOOTER */
-footer{
-    background:#111;
-    color:#aaa;
-    padding:40px 7%;
-    text-align:center;
-}
-footer b{
-    color:#ffd928;
-}
-/* MOBILE */
-@media(max-width:700px){
-    nav{
-        display:none;
+    /* NAVIGATION */
+    nav {
+      height: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(20, 20, 20, 0.95);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
     }
-    .hero{
-        padding-top:140px;
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
     }
-    h1{
-        font-size:60px;
+    .logo span {
+      color: #ffd21c;
     }
-    h2{
-        font-size:35px;
+    nav ul {
+      display: flex;
+      gap: 35px;
+      list-style: none;
     }
-    .lemon3{
-        opacity:.5;
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.2s;
     }
-}
-</style>
+    nav a:hover {
+      color: #ffd21c;
+    }
+    .contact-btn {
+      background: #ffd21c;
+      color: #111 !important;
+      padding: 13px 22px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    /* HERO */
+    .hero {
+      min-height: 750px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,0.85) 0%,
+          rgba(0,0,0,0.55) 40%,
+          rgba(0,0,0,0.15) 100%
+        ),
+        url("scania.png");
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-content {
+      max-width: 600px;
+      margin-left: 7%;
+      margin-top: 60px;
+      z-index: 2;
+    }
+    .company {
+      color: #ffd21c;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    h1 {
+      font-size: 72px;
+      line-height: 0.95;
+      font-weight: 900;
+      margin-bottom: 25px;
+    }
+    h1 span {
+      color: #ffd21c;
+    }
+    .description {
+      font-size: 19px;
+      line-height: 1.6;
+      color: #eee;
+      max-width: 500px;
+      margin-bottom: 35px;
+    }
+    .hero-button {
+      display: inline-block;
+      background: #ffd21c;
+      color: #111;
+      padding: 17px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.25s;
+    }
+    .hero-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 210, 28, 0.3);
+    }
+    /* INFO CARDS */
+    .cards {
+      position: absolute;
+      bottom: 30px;
+      left: 5%;
+      right: 5%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      z-index: 3;
+    }
+    .card {
+      background: rgba(20, 20, 20, 0.9);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 22px;
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+      transition: 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #ffd21c;
+    }
+    .card-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .card h3 {
+      margin-bottom: 8px;
+    }
+    .card p {
+      color: #bbb;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+    /* MOBILE */
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+      .hero {
+        min-height: 850px;
+        background-position: 65% center;
+      }
+      .hero-content {
+        margin: 120px 25px 0;
+      }
+      h1 {
+        font-size: 52px;
+      }
+      .description {
+        font-size: 17px;
+      }
+      .cards {
+        grid-template-columns: 1fr 1fr;
+        bottom: 20px;
+      }
+    }
+    @media (max-width: 550px) {
+      .cards {
+        grid-template-columns: 1fr;
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        padding: 25px;
+        margin-top: -20px;
+      }
+      .hero {
+        min-height: 700px;
+      }
+      h1 {
+        font-size: 43px;
+      }
+      .contact-btn {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>
-<div class="logo">
-🍋 SARAH <span>GMBH</span>
-</div>
-<nav>
-<a href="#leistungen">
-Leistungen
-</a>
-<a href="#tracking">
-Tracking
-</a>
-<a href="#karriere">
-Karriere
-</a>
-<a href="#kontakt">
-Kontakt
-</a>
-</nav>
-</header>
-<!-- HERO -->
-<section class="hero">
-<div class="hero-content">
-<div class="tag">
-SEIT GEFÜHLT GESTERN · EUROPAWEIT
-</div>
-<h1>
-ZITRONEN.<br>
-SPEDITION.<br>
-HANDEL.
-</h1>
-<p>
-Die Sarah GmbH ist Ihr zuverlässiger Partner
-für den professionellen Transport von Zitronen,
-Zitronenkisten und allem, was irgendwie gelb ist.
-</p>
-<a class="btn" href="#leistungen">
-Unsere Leistungen →
-</a>
-</div>
-<div class="lemon lemon1">
-🍋
-</div>
-<div class="lemon lemon2">
-🍋
-</div>
-<div class="lemon lemon3">
-🍋
-</div>
-</section>
-<!-- LEISTUNGEN -->
-<section id="leistungen">
-<h2>
-Unsere Leistungen 🍋
-</h2>
-<div class="cards">
-<div class="card">
-<div class="icon">
-🚛
-</div>
-<h3>
-Zitronen-Logistik
-</h3>
-<p>
-Wir bringen Zitronen von A nach B.
-Manchmal auch von B nach A,
-wenn der Fahrer falsch abgebogen ist.
-</p>
-</div>
-<div class="card">
-<div class="icon">
-📦
-</div>
-<h3>
-Zitronen-Handel
-</h3>
-<p>
-Frisch, sauer und meistens
-nicht auf den Boden gefallen.
-</p>
-</div>
-<div class="card">
-<div class="icon">
-⚡
-</div>
-<h3>
-Express-Zitrone
-</h3>
-<p>
-Ihre Zitrone muss heute noch ankommen?
-Kein Problem. Wir fahren schnell.
-</p>
-</div>
-<div class="card">
-<div class="icon">
-🌍
-</div>
-<h3>
-Europaweit
-</h3>
-<p>
-Von Deutschland bis Frankreich.
-Und vielleicht noch weiter.
-</p>
-</div>
-</div>
-</section>
-<!-- ZAHLEN -->
-<section class="stats">
-<div class="stat">
-<strong>
-1.284.921
-</strong>
-Zitronen transportiert
-</div>
-<div class="stat">
-<strong>
-97%
-</strong>
-pünktlich geliefert
-</div>
-<div class="stat">
-<strong>
-43
-</strong>
-LKW im Fuhrpark
-</div>
-<div class="stat">
-<strong>
-1
-</strong>
-Sarah an der Spitze 👑
-</div>
-</section>
-<!-- TRACKING -->
-<section id="tracking" class="tracking">
-<h2>
-Sendungsverfolgung 📦
-</h2>
-<p>
-Wo steckt deine Zitrone?
-</p>
-<input
-id="trackingInput"
-type="text"
-placeholder="z.B. ZITR-69420"
->
-<button onclick="track()">
-Sendung verfolgen
-</button>
-<div id="result">
-</div>
-</section>
-<!-- KARRIERE -->
-<section id="karriere">
-<h2>
-Karriere bei Sarah GmbH 👷
-</h2>
-<div class="jobs">
-<div class="job">
-<h3>
-🍋 Zitronen-LKW-Fahrer (m/w/d)
-</h3>
-<p>
-4.200 € brutto +
-17 Zitronen pro Monat.
-</p>
-</div>
-<div class="job">
-<h3>
-📦 Zitronen-Lagerist (m/w/d)
-</h3>
-<p>
-Du kannst Paletten stapeln?
-Dann bist du perfekt.
-</p>
-</div>
-<div class="job">
-<h3>
-👑 Stellvertretende Geschäftsführung
-</h3>
-<p>
-Du vertrittst Sarah,
-wenn Sarah keine Lust hat.
-</p>
-</div>
-</div>
-</section>
-<!-- ÜBER UNS -->
-<section>
-<div class="quote">
-„Wir liefern nicht nur Zitronen.
-Wir liefern Lebensqualität
-mit leicht saurem Nachgeschmack.“
-<br><br>
-<small>
-— Sarah, Geschäftsführung
-</small>
-</div>
-</section>
-<!-- KONTAKT -->
-<section id="kontakt">
-<h2>
-Kontakt 📞
-</h2>
-<div class="card">
-<h3>
-Sarah GmbH
-</h3>
-<p>
-<strong>
-Zitronen Spedition & Handel
-</strong>
-</p>
-<br>
-<p>
-📍 Irgendwo in Deutschland
-<br>
-📧 kontakt@sarah-gmbh.example
-<br>
-📞 0800-ZITRONE
-</p>
-<br>
-<p>
-<strong>
-Öffnungszeiten:
-</strong>
-<br>
-Wenn Sarah wach ist.
-</p>
-</div>
-</section>
-<footer>
-© 2026
-<b>
-Sarah GmbH
-</b>
-· Zitronen Spedition & Handel 🍋
-</footer>
-<script>
-function track(){
-    const input =
-    document.getElementById("trackingInput").value;
-    const result =
-    document.getElementById("result");
-    if(input.trim()===""){
-        result.style.display="block";
-        result.innerHTML=
-        "❌ Bitte eine Sendungsnummer eingeben.";
-        return;
-    }
-    result.style.display="block";
-    result.innerHTML=
-    "🚛 <b>Sendung gefunden!</b><br><br>" +
-    "📦 Nummer: " +
-    input.toUpperCase() +
-    "<br>" +
-    "🍋 Inhalt: 1.000 Zitronen<br>" +
-    "📍 Standort: Irgendwo auf der A5<br>" +
-    "⏱️ Status: Fahrer macht gerade Pause.<br>" +
-    "✅ Lieferung: Wenn alles klappt.";
-}
-</script>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">
+      🍋 SARAH <span>GMBH</span>
+    </div>
+    <ul>
+      <li><a href="#">Startseite</a></li>
+      <li><a href="#">Über uns</a></li>
+      <li><a href="#">Leistungen</a></li>
+      <li><a href="#">Fuhrpark</a></li>
+      <li><a href="#">Karriere</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+    <a href="#" class="contact-btn">
+      Kontakt aufnehmen
+    </a>
+  </nav>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="company">
+        SARAH ZITRONEN SPEDITION
+      </div>
+      <h1>
+        FRISCHE, DIE<br>
+        <span>BEWEGT.</span>
+      </h1>
+      <p class="description">
+        Ihre zuverlässige Spedition für frische Zitronen
+        und Obst – sicher, schnell und europaweit.
+      </p>
+      <a href="#" class="hero-button">
+        Mehr über uns →
+      </a>
+    </div>
+    <!-- INFO CARDS -->
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🍋</div>
+        <h3>Frische Qualität</h3>
+        <p>
+          Direkt vom Erzeuger – frisch und hochwertig.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚛</div>
+        <h3>Zuverlässiger Transport</h3>
+        <p>
+          Pünktlich, sicher und termingerecht.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <h3>Europaweit</h3>
+        <p>
+          Wir liefern schnell und zuverlässig in ganz Europa.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌱</div>
+        <h3>Nachhaltig</h3>
+        <p>
+          Umweltbewusst handeln für eine bessere Zukunft.
+        </p>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
